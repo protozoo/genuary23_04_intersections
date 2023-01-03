@@ -40,7 +40,7 @@ function setup(){
     
 
     shred_count=0;
-    shred_lim=50;
+    shred_lim=random_int(50,100);
     water_n=1;
 
     dd=displayDensity()
@@ -63,6 +63,7 @@ function draw(){
 
       let x;
       let y;
+      let shw;
 
       // entropy locking
       if (random_int(1,1000)>997)fxrand=sfc32(...hashes)
@@ -71,22 +72,23 @@ function draw(){
         // tearing effect
         for (let i=0;i<water_n;i++) {
           y=random_int(0,wh)
+          shw=wh/randomChoice([64,32,128,256])
 
           if(is_mobile) {  //mobile device
-            blend(0, y, ww, Math.ceil(max(wh/64,dd)), random_int(-5,5), y, ww, Math.ceil(max(wh/64,dd)),DIFFERENCE)
+            blend(0, y, ww, shw, random_int(-5,5), y, ww, shw, DIFFERENCE)
           } else {
-            image(mycan, 0, y, ww, max(wh/64,dd), random_int(-5,5), y, ww, max(wh/64,dd))
+            image(mycan, 0, y, ww, shw, random_int(-5,5), y, ww, shw)
           }
         }
       
         // // // water vfx
         for (let i=0;i<water_n;i++) {
           x=random_int(0,ww)
-
+          shw=ww/randomChoice([64,32,128,256])
           if (is_mobile) {
-            blend(x, 0, Math.ceil(max(ww/64,dd)), wh, x, random_int(-5,5), Math.ceil(max(ww/64,dd)), wh, DIFFERENCE)
+            blend(x, 0, shw, wh, x, random_int(-5,5), shw, wh, DIFFERENCE)
           } else {
-            image(mycan, x, 0, max(ww/64,dd), wh, x, random_int(-5,5), max(ww/64,dd), wh)
+            image(mycan, x, 0, shw, wh, x, random_int(-5,5), shw, wh)
           }
         }
 
