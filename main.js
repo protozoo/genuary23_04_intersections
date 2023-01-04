@@ -35,6 +35,15 @@ let pd=2;
 let dd;
 
 function setup(){
+
+    if(isFxpreview){
+        ww=1080
+        W=1080
+        wh=1080
+        H=1080
+        pd=4
+    }
+
     mycan = createCanvas(W, H);
     
 
