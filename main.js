@@ -64,6 +64,10 @@ function setup(){
     console.log(dd)
     df = Math.ceil(dd * pd * 0.5)
 
+    if(isFxpreview){
+        df*=2
+    }
+
     mycan = createCanvas(W, H);
     mycan.parent("main");
 
