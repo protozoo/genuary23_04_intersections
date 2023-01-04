@@ -11,7 +11,7 @@ function randomChoice(arr) {
 }
 
 
-hashes = [1827309,10928374,128374]
+// hashes = [1827309,10928374,128374]
 // fxrand = sfc32(...hashes)
 
 
