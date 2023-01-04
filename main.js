@@ -15,8 +15,26 @@ function randomChoice(arr) {
 // fxrand = sfc32(...hashes)
 
 
-let W = 2100;
-let H = 2970;
+let W, H;
+
+let orient = randomChoice( ["portrait", "landscape", "square"] );
+console.log( 'orient', orient );
+switch( orient ){
+    case "portrait":
+        W = 2100;
+        H = 2970;
+        break;
+    case "landscape":
+        W = 2970;
+        H = 2100;
+        break;
+    case "square":
+        W = 2970;
+        H = 2970;
+        break;
+}
+
+
 
 let margin = (W+H)/6;
 const steps = [2,4,8,16,32];
@@ -38,7 +56,6 @@ let need_screenshot = false
 function setup(){
     console.log( "fxhash: ", fxhash );
     
-    windowResized();
 
     // if don't need a screenshot, get a random canvas size
     if(!need_screenshot){
@@ -47,6 +64,8 @@ function setup(){
         ww=W 
         wh=H
     }
+
+    windowResized();
 
     // seed
     fxrand = sfc32(...hashes)
