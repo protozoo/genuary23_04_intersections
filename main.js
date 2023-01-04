@@ -24,9 +24,11 @@ const margin = 300;
 const steps = [2,4,8,16,32];
 
 let colors = ["4d0838","f3722c","f8961e","f9844a","f9c74f","90be6d","43aa8b","4d908e","577590","277da1"];
-//colors = ["001219","005f73","0a9396","94d2bd","e9d8a6","ee9b00","ca6702","bb3e03","ae2012","9b2226"];
+colors = ["001219","005f73","0a9396","94d2bd","e9d8a6","ee9b00","ca6702","bb3e03","ae2012","9b2226"];
 //colors = ["70d6ff","ff70a6","ff9770","ffd670","e9ff70"];
 //colors = ["f6bd60","f7ede2","f5cac3","84a59d","f28482"];
+colors = ["0c0f0a","ff206e","fbff12","41ead4","ffffff"];
+colors = ["3a3335","d81e5b","f0544f","fdf0d5","c6d8d3"];
 
 let wh = H
 let ww = W
@@ -36,11 +38,10 @@ let dd;
 
 function setup(){
     mycan = createCanvas(W, H);
-    background("black");
     
 
     shred_count=0;
-    shred_lim=random_int(50,100);
+    shred_lim=random_int(10,60);
     water_n=1;
 
     dd=displayDensity()
@@ -48,6 +49,7 @@ function setup(){
     if(is_mobile){df/=3}
     console.log([dd,pd,df,ww,wh])
     pixelDensity(df);
+    background("#"+colors[0]);
     blendMode(BLEND);
     noSmooth();
 
@@ -56,8 +58,9 @@ function setup(){
 }
 
 function draw(){
+    noSmooth();
 
-    blendMode(DIFFERENCE)
+    //blendMode(OVERLAY)
 
     if(shred_count<shred_lim){
 
@@ -75,9 +78,9 @@ function draw(){
           shw=wh/randomChoice([64,32,128,256])
 
           if(is_mobile) {  //mobile device
-            blend(0, y, ww, shw, random_int(-5,5), y, ww, shw, DIFFERENCE)
+            blend(0, y, ww, shw, random_int(-20,200), y, ww, shw, DIFFERENCE)
           } else {
-            image(mycan, 0, y, ww, shw, random_int(-5,5), y, ww, shw)
+            image(mycan, 0, y, ww, shw, random_int(-20,200), y, ww, shw)
           }
         }
       
@@ -86,9 +89,9 @@ function draw(){
           x=random_int(0,ww)
           shw=ww/randomChoice([64,32,128,256])
           if (is_mobile) {
-            blend(x, 0, shw, wh, x, random_int(-5,5), shw, wh, DIFFERENCE)
+            blend(x, 0, shw, wh, x, random_int(-20,200), shw, wh, DIFFERENCE)
           } else {
-            image(mycan, x, 0, shw, wh, x, random_int(-5,5), shw, wh)
+            image(mycan, x, 0, shw, wh, x, random_int(-20,200), shw, wh)
           }
         }
 
@@ -113,7 +116,7 @@ function deg2rad( deg ){
 }
 
 function printGrid(){
-    rotate( deg2rad(8 - fxrand() * 16) );
+    rotate( deg2rad(90 - fxrand() * 180) );
     // Rows
     let lastX = -margin;
     while( lastX < W+margin ){
