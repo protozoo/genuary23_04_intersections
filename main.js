@@ -195,18 +195,7 @@ function printGrid(){
 
 // ux
 function keyTyped() {
-  if (key === 's') {
-    save(mycan, "genuary2023-4_protozoo_aebrer.png")
-  } else if (key === 'p') {
-    W=1080
-    H=1080
-    ww=W
-    wh=H
-    clear()
-    shred_count=0
-    need_screenshot=true
-    setup()
-  } else if (key === 'w') {
+  if (key === 'w') {
     W=2560
     H=1440
     ww=W
@@ -217,6 +206,7 @@ function keyTyped() {
     setup()
   }
 }
+
 function windowResized() {  
   let scale = Math.min(
     window.innerWidth / W,    
