@@ -26,6 +26,7 @@ let colors = [];
 
 let shred_count = 0
 let shred_lim=0
+let water_n=1;
 let wh = H
 let ww = W
 let mycan
@@ -45,8 +46,6 @@ function setup(){
     colors.push(["0c0f0a","ff206e","fbff12","41ead4","ffffff"])
     colors.push(["3a3335","d81e5b","f0544f","fdf0d5","c6d8d3"])
     colors = randomChoice(colors)
-
-    loop()
 
     if(isFxpreview){
         ww=1080
@@ -68,25 +67,15 @@ function setup(){
     background("#"+colors[0]);
     blendMode(BLEND);
     noSmooth();
-
-    console.log("here")
     printGrid();
-    console.log("here2")
-    console.log(shred_lim)
-    console.log(shred_count)
-    console.log("w",ww,"h",wh)
+
 }
 
 function draw(){
     noSmooth();
-
-    console.log("here3")
-
     blendMode(randomChoice([BLEND,BLEND,OVERLAY]))
+    if(shred_count<shred_lim || shred_count==0){
 
-    if(shred_count<shred_lim){
-
-      console.log("here4")
 
       let x;
       let y;
@@ -178,11 +167,20 @@ function keyTyped() {
   } else if (key === 'p') {
     W=1080
     H=1080
-    ww=1080
-    wh=1080
+    ww=W
+    wh=H
     clear()
+    shred_count=0
     need_screenshot=true
-    shred_count=0;
+    setup()
+  } else if (key === 'w') {
+    W=2560
+    H=1440
+    ww=W
+    wh=H
+    clear()
+    shred_count=0
+    need_screenshot=true
     setup()
   }
 }
