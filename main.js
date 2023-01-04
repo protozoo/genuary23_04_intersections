@@ -204,6 +204,8 @@ function keyTyped() {
     shred_count=0
     need_screenshot=true
     setup()
+  } else if (key === "s") {
+    need_screenshot=true
   }
 }
 
