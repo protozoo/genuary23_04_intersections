@@ -120,7 +120,6 @@ function draw(){
         save(mycan, "genuary2023-4_protozoo_aebrer.png")
         need_screenshot=false
       }
-      noLoop();
       return
     }
 
