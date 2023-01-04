@@ -16,23 +16,9 @@ function randomChoice(arr) {
 
 
 let W, H;
+let orient = "portrait"
 
-let orient = randomChoice( ["portrait", "landscape", "square"] );
-console.log( 'orient', orient );
-switch( orient ){
-    case "portrait":
-        W = 2100;
-        H = 2970;
-        break;
-    case "landscape":
-        W = 2970;
-        H = 2100;
-        break;
-    case "square":
-        W = 2970;
-        H = 2970;
-        break;
-}
+
 
 
 
@@ -59,8 +45,22 @@ function setup(){
 
     // if don't need a screenshot, get a random canvas size
     if(!need_screenshot){
-        W = random_int(1000, 3000);
-        H = random_int(1000, 3000);
+        orient = randomChoice( ["portrait", "landscape", "square"] );
+        console.log( 'orient', orient );
+        switch( orient ){
+            case "portrait":
+                W = 2100;
+                H = 2970;
+                break;
+            case "landscape":
+                W = 2970;
+                H = 2100;
+                break;
+            case "square":
+                W = 2970;
+                H = 2970;
+                break;
+        }
         ww=W 
         wh=H
     }
