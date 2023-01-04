@@ -35,7 +35,8 @@ let dd;
 let need_screenshot = false
 
 function setup(){
-  console.log( "fxhash: ", fxhash );
+    console.log( "fxhash: ", fxhash );
+    
     windowResized();
 
     // seed
