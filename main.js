@@ -15,8 +15,8 @@ function randomChoice(arr) {
 // fxrand = sfc32(...hashes)
 
 
-let W = window.innerWidth;
-let H = window.innerHeight;
+let W = 2100;
+let H = 2970;
 
 let margin = (W+H)/6;
 const steps = [2,4,8,16,32];
@@ -35,6 +35,8 @@ let dd;
 let need_screenshot = false
 
 function setup(){
+  console.log( "fxhash: ", fxhash );
+    windowResized();
 
     // seed
     fxrand = sfc32(...hashes)
@@ -55,6 +57,7 @@ function setup(){
     }
 
     mycan = createCanvas(W, H);
+    mycan.parent("main");
 
     shred_count=0;
     shred_lim=random_int(15,60);
@@ -110,6 +113,7 @@ function draw(){
         save(mycan, "genuary2023-4_protozoo_aebrer.png")
         need_screenshot=false
       }
+      noLoop();
       return
     }
 
@@ -184,3 +188,11 @@ function keyTyped() {
     setup()
   }
 }
+function windowResized() {  
+  let scale = Math.min(
+    window.innerWidth / W,    
+    window.innerHeight / H
+  );
+  let $el = document.querySelector("#defaultCanvas0");
+  $el.style.transform = "" + "scale(" + scale + ")";
+};
