@@ -30,7 +30,7 @@ let colors = [];
 
 let shred_count = 0
 let shred_lim=0
-let water_n=1;
+let water_n=randomChoice([1,2,4,8,16]);
 let wh = H
 let ww = W
 let mycan
@@ -121,7 +121,7 @@ function draw(){
         // tearing effect
         for (let i=0;i<water_n;i++) {
           y=fxrand()*wh
-          shw=wh/randomChoice([64,32,128,256])
+          shw=wh/randomChoice([8,16,64,32,128,256])
           image(mycan, 0, y, ww, shw, 0, y, ww, shw)
           
         }
@@ -129,7 +129,7 @@ function draw(){
         // // // water vfx
         for (let i=0;i<water_n;i++) {
           x=fxrand()*ww
-          shw=ww/randomChoice([64,32,128,256])
+          shw=ww/randomChoice([8,16,64,32,128,256])
           image(mycan, x, 0, shw, wh, x, 0, shw, wh)
         }
 
@@ -162,7 +162,7 @@ function printGrid(){
     let lastX = -margin;
     while( lastX < W+margin ){
         let step = steps[ Math.floor(fxrand() * steps.length) ];
-        let numReps = randomChoice([30,200,500]) / step; //2 + Math.floor( fxrand()*10 );
+        let numReps = randomChoice([10,20,30,100,200]) / step; //2 + Math.floor( fxrand()*10 );
         let x;
         stroke( "#" + colors[ Math.floor(fxrand()*colors.length) ]);
         for(let j = 0; j < numReps; j++){
@@ -179,7 +179,7 @@ function printGrid(){
     inbound = true;
     while( lastY < H+margin ){
         let step = steps[ Math.floor(fxrand() * steps.length) ];
-        let numReps = randomChoice([30,200,500]) / step; //2 + Math.floor( fxrand()*10 );
+        let numReps = randomChoice([10,20,30,100,200]) / step; //2 + Math.floor( fxrand()*10 );
         let y;
         stroke( "#" + colors[ Math.floor(fxrand()*colors.length) ]);
         for(let j = 0; j < numReps; j++){
