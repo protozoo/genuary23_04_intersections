@@ -46,7 +46,6 @@ function setup(){
         H = random_int(1000, 3000);
         ww=W 
         wh=H
-        windowResized();
     }
 
     // seed
