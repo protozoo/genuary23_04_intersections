@@ -32,6 +32,7 @@ let ww = W
 let mycan
 let pd=2;
 let dd;
+let df;
 let need_screenshot = false
 
 function setup(){
@@ -47,11 +48,17 @@ function setup(){
     colors.push(["3a3335","d81e5b","f0544f","fdf0d5","c6d8d3"])
     colors = randomChoice(colors)
 
+
     if(isFxpreview){
         ww=1080
         W=1080
         wh=1080
         H=1080
+        df = 2
+    } else {
+        dd=displayDensity()
+        console.log(dd)
+        df = Math.ceil(dd * pd * 0.5)
     }
 
     mycan = createCanvas(W, H);
@@ -60,8 +67,7 @@ function setup(){
     shred_lim=random_int(15,60);
     water_n=1;
 
-    dd=displayDensity()
-    let df = Math.ceil(dd * pd * 0.5)
+
     console.log([dd,pd,df,ww,wh])
     pixelDensity(df);
     background("#"+colors[0]);
