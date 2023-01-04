@@ -77,7 +77,7 @@ function draw(){
           shw=wh/randomChoice([64,32,128,256])
 
           if(is_mobile) {  //mobile device
-            blend(0, y, ww, shw, random_int(-20,200), y, ww, shw)
+            blend(0, y, ww, shw, random_int(-20,200), y, ww, shw, BLEND)
           } else {
             image(mycan, 0, y, ww, shw, random_int(-20,200), y, ww, shw)
           }
@@ -88,7 +88,7 @@ function draw(){
           x=random_int(0,ww)
           shw=ww/randomChoice([64,32,128,256])
           if (is_mobile) {
-            blend(x, 0, shw, wh, x, random_int(-20,200), shw, wh)
+            blend(x, 0, shw, wh, x, random_int(-20,200), shw, wh, BLEND)
           } else {
             image(mycan, x, 0, shw, wh, x, random_int(-20,200), shw, wh)
           }
