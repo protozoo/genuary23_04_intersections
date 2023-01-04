@@ -45,7 +45,7 @@ function setup(){
 
     // if don't need a screenshot, get a random canvas size
     if(!need_screenshot){
-        orient = randomChoice( ["portrait", "landscape", "square"] );
+        orient = randomChoice( ["portrait", "portrait", "portrait", "landscape", "landscape", "square"] );
         console.log( 'orient', orient );
         switch( orient ){
             case "portrait":
