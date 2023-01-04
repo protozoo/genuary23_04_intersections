@@ -11,37 +11,48 @@ function randomChoice(arr) {
 }
 
 
-// hashes = [1827309,10928374,128374]
-fxrand = sfc32(...hashes)
+hashes = [1827309,10928374,128374]
+// fxrand = sfc32(...hashes)
 
-const W = window.innerWidth;
-const H = window.innerHeight;
 
-const margin = (W+H)/6;
+let W = window.innerWidth;
+let H = window.innerHeight;
+
+let margin = (W+H)/6;
 const steps = [2,4,8,16,32];
 
-let colors = [["4d0838","f3722c","f8961e","f9844a","f9c74f","90be6d","43aa8b","4d908e","577590","277da1"]];
-colors.push(["001219","005f73","0a9396","94d2bd","e9d8a6","ee9b00","ca6702","bb3e03","ae2012","9b2226"])
-//colors = ["70d6ff","ff70a6","ff9770","ffd670","e9ff70"];
-//colors = ["f6bd60","f7ede2","f5cac3","84a59d","f28482"];
-colors.push(["0c0f0a","ff206e","fbff12","41ead4","ffffff"])
-colors.push(["3a3335","d81e5b","f0544f","fdf0d5","c6d8d3"])
-colors = randomChoice(colors)
+let colors = [];
 
+
+let shred_count = 0
+let shred_lim=0
 let wh = H
 let ww = W
 let mycan
 let pd=2;
 let dd;
+let need_screenshot = false
 
 function setup(){
+
+    // seed
+    fxrand = sfc32(...hashes)
+
+    margin = (W+H)/6;
+    colors = [];
+    colors.push(["4d0838","f3722c","f8961e","f9844a","f9c74f","90be6d","43aa8b","4d908e","577590","277da1"])
+    colors.push(["001219","005f73","0a9396","94d2bd","e9d8a6","ee9b00","ca6702","bb3e03","ae2012","9b2226"])
+    colors.push(["0c0f0a","ff206e","fbff12","41ead4","ffffff"])
+    colors.push(["3a3335","d81e5b","f0544f","fdf0d5","c6d8d3"])
+    colors = randomChoice(colors)
+
+    loop()
 
     if(isFxpreview){
         ww=1080
         W=1080
         wh=1080
         H=1080
-        pd=4
     }
 
     mycan = createCanvas(W, H);
@@ -58,15 +69,24 @@ function setup(){
     blendMode(BLEND);
     noSmooth();
 
+    console.log("here")
     printGrid();
+    console.log("here2")
+    console.log(shred_lim)
+    console.log(shred_count)
+    console.log("w",ww,"h",wh)
 }
 
 function draw(){
     noSmooth();
 
+    console.log("here3")
+
     blendMode(randomChoice([BLEND,BLEND,OVERLAY]))
 
     if(shred_count<shred_lim){
+
+      console.log("here4")
 
       let x;
       let y;
@@ -97,7 +117,10 @@ function draw(){
     } else {
       // done rendering fully
       fxpreview()
-      noLoop()
+      if(need_screenshot){
+        save(mycan, "genuary2023-4_protozoo_aebrer.png")
+        need_screenshot=false
+      }
       return
     }
 
@@ -152,5 +175,14 @@ function printGrid(){
 function keyTyped() {
   if (key === 's') {
     save(mycan, "genuary2023-4_protozoo_aebrer.png")
+  } else if (key === 'p') {
+    W=1080
+    H=1080
+    ww=1080
+    wh=1080
+    clear()
+    need_screenshot=true
+    shred_count=0;
+    setup()
   }
 }
