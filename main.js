@@ -11,13 +11,13 @@ function randomChoice(arr) {
 }
 
 
-// hashes = "hriirieiririiiritiififiviviifj"
-// if(hashes==="debug"){hashes=random_num(0,1000000)}
+// hashes = [1827309,10928374,128374]
 fxrand = sfc32(...hashes)
 
 const W = window.innerWidth;
 const H = window.innerHeight;
-const margin = 300;
+
+const margin = (W+H)/6;
 const steps = [2,4,8,16,32];
 
 let colors = [["4d0838","f3722c","f8961e","f9844a","f9c74f","90be6d","43aa8b","4d908e","577590","277da1"]];
@@ -45,7 +45,6 @@ function setup(){
     }
 
     mycan = createCanvas(W, H);
-    
 
     shred_count=0;
     shred_lim=random_int(15,60);
@@ -79,7 +78,7 @@ function draw(){
 
         // tearing effect
         for (let i=0;i<water_n;i++) {
-          y=random_int(0,wh)
+          y=fxrand()*wh
           shw=wh/randomChoice([64,32,128,256])
           image(mycan, 0, y, ww, shw, 0, y, ww, shw)
           
@@ -87,7 +86,7 @@ function draw(){
       
         // // // water vfx
         for (let i=0;i<water_n;i++) {
-          x=random_int(0,ww)
+          x=fxrand()*ww
           shw=ww/randomChoice([64,32,128,256])
           image(mycan, x, 0, shw, wh, x, 0, shw, wh)
         }
