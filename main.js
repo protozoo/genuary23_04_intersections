@@ -40,6 +40,15 @@ function setup(){
     
     windowResized();
 
+    // if don't need a screenshot, get a random canvas size
+    if(!need_screenshot){
+        W = random_int(1000, 3000);
+        H = random_int(1000, 3000);
+        ww=W 
+        wh=H
+        windowResized();
+    }
+
     // seed
     fxrand = sfc32(...hashes)
 
@@ -52,17 +61,9 @@ function setup(){
     colors = randomChoice(colors)
 
 
-    if(isFxpreview){
-        ww=1080
-        W=1080
-        wh=1080
-        H=1080
-        df = 2
-    } else {
-        dd=displayDensity()
-        console.log(dd)
-        df = Math.ceil(dd * pd * 0.5)
-    }
+    dd=displayDensity()
+    console.log(dd)
+    df = Math.ceil(dd * pd * 0.5)
 
     mycan = createCanvas(W, H);
     mycan.parent("main");
