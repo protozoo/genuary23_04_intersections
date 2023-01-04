@@ -11,9 +11,6 @@ function randomChoice(arr) {
 }
 
 
-// will decide on mobile mode unless there is a pointer device with hover capability attached
-let is_mobile = window.matchMedia("(any-hover: none)").matches
-
 // hashes = "hriirieiririiiritiififiviviifj"
 // if(hashes==="debug"){hashes=random_num(0,1000000)}
 fxrand = sfc32(...hashes)
@@ -47,7 +44,6 @@ function setup(){
 
     dd=displayDensity()
     let df = Math.ceil(dd * pd * 0.5)
-    if(is_mobile){df/=3}
     console.log([dd,pd,df,ww,wh])
     pixelDensity(df);
     background("#"+colors[0]);
@@ -55,7 +51,6 @@ function setup(){
     noSmooth();
 
     printGrid();
-    console.log("is_mobile: ",is_mobile)
 }
 
 function draw(){
@@ -75,23 +70,15 @@ function draw(){
         for (let i=0;i<water_n;i++) {
           y=random_int(0,wh)
           shw=wh/randomChoice([64,32,128,256])
-
-          if(is_mobile) {  //mobile device
-            blend(0, y, ww, shw, random_int(-20,200), y, ww, shw, BLEND)
-          } else {
-            image(mycan, 0, y, ww, shw, random_int(-20,200), y, ww, shw)
-          }
+          image(mycan, 0, y, ww, shw, random_int(-20,200), y, ww, shw)
+          
         }
       
         // // // water vfx
         for (let i=0;i<water_n;i++) {
           x=random_int(0,ww)
           shw=ww/randomChoice([64,32,128,256])
-          if (is_mobile) {
-            blend(x, 0, shw, wh, x, random_int(-20,200), shw, wh, BLEND)
-          } else {
-            image(mycan, x, 0, shw, wh, x, random_int(-20,200), shw, wh)
-          }
+          image(mycan, x, 0, shw, wh, x, random_int(-20,200), shw, wh)
         }
 
       shred_count+=1
