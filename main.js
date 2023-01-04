@@ -23,7 +23,7 @@ let orient = "portrait"
 
 
 let margin = (W+H)/6;
-const steps = [2,4,8,16,32];
+const steps = [2,4,8,16,32,64,128];
 
 let colors = [];
 
@@ -162,7 +162,7 @@ function printGrid(){
     let lastX = -margin;
     while( lastX < W+margin ){
         let step = steps[ Math.floor(fxrand() * steps.length) ];
-        let numReps = 30 / step; //2 + Math.floor( fxrand()*10 );
+        let numReps = randomChoice([30,200,500]) / step; //2 + Math.floor( fxrand()*10 );
         let x;
         stroke( "#" + colors[ Math.floor(fxrand()*colors.length) ]);
         for(let j = 0; j < numReps; j++){
@@ -179,7 +179,7 @@ function printGrid(){
     inbound = true;
     while( lastY < H+margin ){
         let step = steps[ Math.floor(fxrand() * steps.length) ];
-        let numReps = 30 / step; //2 + Math.floor( fxrand()*10 );
+        let numReps = randomChoice([30,200,500]) / step; //2 + Math.floor( fxrand()*10 );
         let y;
         stroke( "#" + colors[ Math.floor(fxrand()*colors.length) ]);
         for(let j = 0; j < numReps; j++){
