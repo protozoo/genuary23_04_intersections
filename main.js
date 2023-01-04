@@ -70,12 +70,15 @@ function setup(){
     // seed
     fxrand = sfc32(...hashes)
 
-    margin = (W+H)/2;
+    margin = (W+H)/randomChoice([2,4,8,16]);
     colors = [];
     colors.push(["4d0838","f3722c","f8961e","f9844a","f9c74f","90be6d","43aa8b","4d908e","577590","277da1"])
     colors.push(["001219","005f73","0a9396","94d2bd","e9d8a6","ee9b00","ca6702","bb3e03","ae2012","9b2226"])
     colors.push(["0c0f0a","ff206e","fbff12","41ead4","ffffff"])
     colors.push(["3a3335","d81e5b","f0544f","fdf0d5","c6d8d3"])
+    colors.push(["3a3630","c0b7b1","8e6e53","c69c72","433e3f"])
+    colors.push(["001219","005f73","0a9396","94d2bd","e9d8a6","ee9b00","ca6702","bb3e03","ae2012","9b2226"])
+    colors.push(["2e3532","7e9181","c7cedb","a0aab2","94849b","faf33e","7b0828"])
     colors = randomChoice(colors)
 
 
