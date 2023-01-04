@@ -59,8 +59,6 @@ function setup(){
 
     // if don't need a screenshot, get a random canvas size
     if(!need_screenshot){
-        W = random_int(1000, 3000);
-        H = random_int(1000, 3000);
         ww=W 
         wh=H
     }
