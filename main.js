@@ -94,7 +94,7 @@ function setup(){
     mycan.parent("main");
 
     shred_count=0;
-    shred_lim=random_int(15,30);
+    shred_lim=random_int(15,45);
     water_n=1;
 
 
