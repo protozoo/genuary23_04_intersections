@@ -56,6 +56,8 @@ function setup(){
 function draw(){
     noSmooth();
 
+    blendMode(randomChoice([BLEND,BLEND,OVERLAY]))
+
     if(shred_count<shred_lim){
 
       let x;
@@ -70,7 +72,7 @@ function draw(){
         for (let i=0;i<water_n;i++) {
           y=random_int(0,wh)
           shw=wh/randomChoice([64,32,128,256])
-          image(mycan, 0, y, ww, shw, random_int(-20,200), y, ww, shw)
+          image(mycan, 0, y, ww, shw, 0, y, ww, shw)
           
         }
       
@@ -78,7 +80,7 @@ function draw(){
         for (let i=0;i<water_n;i++) {
           x=random_int(0,ww)
           shw=ww/randomChoice([64,32,128,256])
-          image(mycan, x, 0, shw, wh, x, random_int(-20,200), shw, wh)
+          image(mycan, x, 0, shw, wh, x, 0, shw, wh)
         }
 
       shred_count+=1
